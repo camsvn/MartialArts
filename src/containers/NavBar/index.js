@@ -30,12 +30,12 @@ class NavBar extends React.Component {
     }
 
     handleClick = (e) => {
-        console.log(e)
         if(e.key==="logout") {
-            localStorage.clear()
+            localStorage.removeItem("token")
             this.props.navigation.push({ pathname: "login" })
+        }else{
+            this.props.navigation.push({ pathname: e.key })
         }
-        this.props.navigation.push({ pathname: e.key })
     }
 
     render() {

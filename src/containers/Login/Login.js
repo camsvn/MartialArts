@@ -23,8 +23,10 @@ const cardStyle = {
 
 class Login extends Component {
     handleSubmit = (values) => {
+        values.preventDefault()
         console.log("Success:", values)
         this.props.login(values)
+        this.props.navigation.push({ pathname: "/" })
     }
 
     onFinishFailed = (errorInfo) => {
