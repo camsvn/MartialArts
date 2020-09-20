@@ -30,6 +30,11 @@ class NavBar extends React.Component {
     }
 
     handleClick = (e) => {
+        console.log(e)
+        if(e.key==="logout") {
+            localStorage.clear()
+            this.props.navigation.push({ pathname: "login" })
+        }
         this.props.navigation.push({ pathname: e.key })
     }
 
@@ -47,8 +52,8 @@ class NavBar extends React.Component {
                             menu.path != undefined
                                 ? menu.path
                                 : menu.title
-                                      .replace(" ", "")
-                                      .toLocaleLowerCase()
+                                    .replace(" ", "")
+                                    .toLocaleLowerCase()
                         return (
                             <Menu.Item
                                 key={key}
@@ -58,7 +63,7 @@ class NavBar extends React.Component {
                         )
                     }
                 })}
-                <Menu.Item style={{ float: "right" }}>Logout</Menu.Item>
+                <Menu.Item style={{ float: "right" }} key={"logout"}>Logout</Menu.Item>
             </Menu>
         )
     }
