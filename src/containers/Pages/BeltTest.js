@@ -72,9 +72,10 @@ class BeltTest extends Component {
                         <Col>
                             <Form
                                 {...layout}
-                                layout="inline"
-                                name="control-ref"
-                                onFinish={this.onFinish}>
+                                layout="inline"                               l                                
+                                // onFinish={this.onFinish}
+                                // onSubmit={this.onFinish}
+                                name="control-ref">
                                 <Form.Item
                                     name="studentid"
                                     rules={[
@@ -159,11 +160,11 @@ class BeltTest extends Component {
                     </Row>
                     <Divider orientation="left">Result</Divider>
                     <Row gutter={[16, 24]}>
-                        {data.map((d) => {
+                        {data.map((d,_idx) => {
                             return (
                                 <Col
                                     xs={{ span: 24, offset: 0 }}
-                                    lg={{ span: 6, offset: 0 }}>
+                                    lg={{ span: 6, offset: 0 }} key={_idx}>
                                     <Card
                                         title={d.Title}
                                         bordered={true}

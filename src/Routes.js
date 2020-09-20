@@ -1,27 +1,30 @@
 import PropTypes from "prop-types"
 import React from "react"
 import { Router, Route, IndexRoute } from "react-router"
-import { App, Home, Attendance, Login, BeltTest, AddEvents, Events } from "./containers"
+import { App, Home, Attendance, Login, BeltTest, AddEvents, Events, Library, Profile, EditProfile } from "./containers"
 
 function checkForLoggedIn(nextState, replace, callback){
-  let loggedInUser = localStorage.getItem('token')
-  if(!loggedInUser){
-    replace(`/login`);
-  }
+    let loggedInUser = localStorage.getItem("token")
+    if(!loggedInUser){
+        replace("/login")
+    }
 
-  callback()
+    callback()
 }
 
 const PathRoute = (props) => {
     return (
         <Router history={props.history}>
-            <Route exact path="/" component={App} onEnter={checkForLoggedIn}>
+            <Route exact path="/" component={App} >
                 <IndexRoute component={Home} />
-                <Route path="/home" component={Home} />
+                {/* <Route path="/home" component={App} /> */}
                 <Route path="/attendance" component={Attendance} />
                 <Route path="/belttest" component={BeltTest} />
                 <Route path="/events" component={Events} />
                 <Route path="/addevents" component={AddEvents} />
+                <Route path="/editprofile" component={EditProfile} />
+                <Route path="/myprofile" component={Profile} />
+                <Route path="/library" component={Library} />                
             </Route>
             <Route path="/login" component={Login} />
         </Router>

@@ -35,13 +35,15 @@ function MiniDrawer(props) {
                 <Col lg={24}>
                     <Breadcrumb style={{ margin: "16px 10px" }}>
                         <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>
-                            {pageName}
-                        </Breadcrumb.Item>
+                        {pageName!=="Home" ? (
+                            <Breadcrumb.Item>
+                                {pageName}
+                            </Breadcrumb.Item>
+                        ):null}                        
                     </Breadcrumb>
                     <div
-                        className="site-layout-content"
-                        style={{ height: "calc(100vh - 55px)" }}>
+                        // style={{ height: "calc(100vh - 55px)" }}
+                        className="site-layout-content">
                         {props.children}
                     </div>{" "}
                 </Col>
