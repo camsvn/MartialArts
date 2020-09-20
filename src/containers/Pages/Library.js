@@ -1,80 +1,105 @@
 import React, { Component } from "react"
-import { connect } from "react-redux"
-import { withRouter } from "react-router"
-import {
-    Row,
-    Col,
-    Button,
-    Spin,
-    Divider,
-} from "antd"
+import { DatePicker, Button, Select } from "antd"
+import { Row, Col, Table, Divider, Spin, Card, Tag } from "antd"
 import "video-react/dist/video-react.css"
-import "./Profile.scss"
+import { Player } from "video-react"
+const { Meta } = Card
+const { Option } = Select
+import "./Library.scss"
+
 
 class Library extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            tableData: [],
-            videoPopupOpen: false,
-        }
+        this.state = {}
     }
+
+    onChange = (date, dateString) => {
+        console.log(date, dateString)
+    }
+    handleChange = (value) => {
+        console.log(`selected ${value}`)
+    }
+
     render() {
         return (
             <div>
                 <Spin size="large" spinning={false}>
-                    <Row style={{ border: "1px solid #CCC" }} gutter={[16, 24]}>
+                    <Row
+                        style={{ marginBottom: 20, alignItems:"baseline" }}
+                        type="flex"
+                        align="center">
                         <Col
-                            align={"center"}
-                            style={{ borderRight: "1px solid #CCC" }}
                             xs={{ span: 24, offset: 0 }}
-                            lg={{ span: 6, offset: 0 }}>
-                            <img
-                                style={{ borderRadius: "50%" }}
-                                width={200}
-                                height={200}
-                                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-                            />
+                            lg={{ span: 5, offset: 0 }}>
+                            <Select
+                                placeholder="Select Belt"
+                                style={{ width: "100%", margin: 5 }}
+                                onChange={this.handleChange}>
+                                <Option value="b1">Belt 1</Option>
+                                <Option value="b2">Belt 2</Option>
+                            </Select>
                         </Col>
                         <Col
-                            className="profile-desc"
-                            style={{
-                                display: "flex",
-                                flexDirection: "column",
-                                lineHeight: 1.9,
-                            }}
                             xs={{ span: 24, offset: 0 }}
-                            lg={{ span: 18, offset: 0 }}>
-                            <div style={{ padding: 20 }}>
-                                <p><b>Name</b>&#9;: Xio Pan </p>
-                                <p><b>Role</b>&#9;: Tutor</p>
-                                <p><b>Email</b>&#9;: xyz@gmail.com</p>
-                                <p><b>Phone</b>&#9;: +91 123 456 7890</p>
-                            </div>
+                            lg={{ span: 5, offset: 1 }}>
+                            <Select
+                                placeholder="Select Batch"
+                                style={{ width: "100%", margin: 5 }}
+                                onChange={this.handleChange}>
+                                <Option value="b1">Batch 1</Option>
+                                <Option value="b2">Batch 2</Option>
+                            </Select>
                         </Col>
-                    </Row>
-                    <Divider orientation="left" style={{margin: "2rem 0"}}>
-                        <Button
-                            type="primary"
-                            onClick={() => {
-                                this.props.navigation.push({
-                                    pathname: "addcourse",
-                                })
-                            }}>
-                            Add Course
-                        </Button>
-                    </Divider>
+                        <Col
+                            xs={{ span: 24, offset: 0 }}
+                            lg={{ span: 5, offset: 1 }}>
+                            <Select
+                                placeholder="Select Video"
+                                style={{ width: "100%", margin: 5 }}
+                                onChange={this.handleChange}>
+                                <Option value="batch1">Video 1</Option>
+                                <Option value="batch2">Video 2</Option>
+                                <Option value="batch3">Video 3</Option>
+                            </Select>
+                        </Col>
+                        <Col
+                            xs={{ span: 23, offset: 0 }}
+                            lg={{ span: 5, offset: 1 }}
+                            style={{ width: "fit-content"}}>
+                            <Button type="primary" htmlType="submit" style={{marginTop: "5px"}}>Go</Button>
+                        </Col>
+                    </Row>  
+                    <Row
+                        type="flex"
+                        align="center"
+                        // style={{ marginTop: 20, width: "500px"}}
+                        // xs={{ span: 24, offset: 0 }}
+                        // sm={{ span: 5, offset: 1 }}
+                    >
+                        <Col className="player" style={{width:"80%", minWidth: "325px", maxWidth:"1080px"}}>
+                            <Card cover={
+                                <Player >
+                                    <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
+                                </Player>
+                            }>
+                                <Meta title="Back Kick" description="Full Stance, Basic Fitness Drills, Practised By the Indian Military introduced to TSMA curriculam by Master S.K. Murthy." />
+                                <div style={{marginTop: "10px"}}>
+                                    <Tag color="red">Tag 1</Tag>
+                                    <Tag color="volcano">Tag 2</Tag>
+                                    <Tag color="green">Tag 3</Tag>
+                                    <Tag color="blue">Tag 4</Tag>
+                                    <Tag color="geekblue">Tag 5</Tag>
+                                    <Tag color="purple">Tag 6</Tag>
+                                </div>
+                            </Card>
+
+                        </Col>
+                    </Row>                  
                 </Spin>
             </div>
         )
     }
 }
 
-function mapStateToProps(state, ownProps) {
-    console.log(state, ownProps)
-    return {
-        navigation: ownProps.router,
-    }
-}
-
-export default withRouter(connect(mapStateToProps, {})(Library))
+export default Library
