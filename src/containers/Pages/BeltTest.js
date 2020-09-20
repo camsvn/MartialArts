@@ -146,6 +146,7 @@ class BeltTest extends Component {
                             </span>
                             <Select
                                 placeholder="Select Belt"
+                                value="b1"
                                 onChange={this.handleChange}>
                                 <Option value="b1">Belt 1</Option>
                                 <Option value="b2">Belt 2</Option>
