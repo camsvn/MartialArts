@@ -16,4 +16,5 @@ export const MAIN_NAV_MENU = [
     { title: "My Profile", path: "myprofile", icon: <UserOutlined /> },
     { title: "Add Events", path: "addevents", highlight:"events", nolink: true, icon: <UserOutlined /> },
     { title: "Edit Profile", path: "editprofile", highlight:"myprofile", nolink: true, icon: <UserOutlined /> },
+    { title: "Add Course", path: "addcourse", highlight:"library", nolink: true, icon: <UserOutlined /> },
 ]

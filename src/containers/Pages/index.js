@@ -6,6 +6,7 @@ import AddEvents from "./AddEvents"
 import Library from "./Library"
 import Profile from "./Profile"
 import EditProfile from "./EditProfile"
+import AddCourse from "./AddCourse"
 
 export {
     Home,
@@ -15,5 +16,6 @@ export {
     AddEvents,
     Library,
     Profile,
-    EditProfile
+    EditProfile,
+    AddCourse
 }
