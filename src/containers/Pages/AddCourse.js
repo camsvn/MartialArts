@@ -72,7 +72,7 @@ class AddCourse extends Component {
                     {...layout}
                     name="nest-messages"
                     onSubmit={this.onFinish}
-                    validateMessages={validateMessages}>
+                    validatemessages={validateMessages}>
                     <Form.Item label="Belt">
                         {getFieldDecorator("belt", {
                             rules: [
@@ -125,8 +125,8 @@ class AddCourse extends Component {
                     <Form.Item
                         name="upload"
                         label="Upload Video"
-                        valuePropName="fileList"
-                        getValueFromEvent={this.normFile}
+                        valuepropname="fileList"
+                        // getvaluefromevent={this.normFile}
                         // extra="Select your new profile picture"
                     >
                         <Dragger {...uploadProps}>
@@ -150,8 +150,7 @@ class AddCourse extends Component {
                         </Upload> */}
                     </Form.Item>        
                     <Form.Item
-                        wrapperCol={{ ...layout.wrapperCol }}
-                        align="center">
+                        wrapperCol={{ ...layout.wrapperCol }}>
                         <Button type="primary" htmlType="submit">
                             Upload
                         </Button>

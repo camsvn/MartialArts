@@ -15,7 +15,7 @@ function checkForLoggedIn(nextState, replace, callback){
 const PathRoute = (props) => {
     return (
         <Router history={props.history}>
-            <Route exact path="/" component={App} >
+            <Route exact path="/" component={App} onEnter={checkForLoggedIn} >
                 <IndexRoute component={Home} />
                 {/* <Route path="/home" component={App} /> */}
                 <Route path="/attendance" component={Attendance} />
