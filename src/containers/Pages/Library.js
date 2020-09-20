@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { DatePicker, Button, Select } from "antd"
 import { Row, Col, Table, Divider, Spin, Card, Tag } from "antd"
+import { connect } from "react-redux"
+import { withRouter } from "react-router"
 import "video-react/dist/video-react.css"
 import { Player } from "video-react"
 const { Meta } = Card
@@ -95,11 +97,29 @@ class Library extends Component {
                             </Card>
 
                         </Col>
-                    </Row>                  
+                    </Row>  
+                    <Divider orientation="left" style={{margin: "2rem 0"}}>
+                        <Button
+                            type="primary"
+                            onClick={() => {
+                                this.props.navigation.push({
+                                    pathname: "addcourse",
+                                })
+                            }}>
+                            Add Course
+                        </Button>
+                    </Divider>                
                 </Spin>
             </div>
         )
     }
 }
 
-export default Library
+function mapStateToProps(state, ownProps) {
+    console.log(state, ownProps)
+    return {
+        navigation: ownProps.router,
+    }
+}
+
+export default withRouter(connect(mapStateToProps, {})(Library))

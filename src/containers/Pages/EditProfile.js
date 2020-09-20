@@ -49,7 +49,7 @@ function beforeUpload(file) {
     return isJpgOrPng && isLt2M
 }
 
-class AddEvents extends Component {
+class EditProfile extends Component {
     constructor(props) {
         super(props)
         this.state = {}
@@ -214,7 +214,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 const WrappedAdvancedSearchForm = Form.create({ name: "advanced_search" })(
-    AddEvents
+    EditProfile
 )
 
 export default WrappedAdvancedSearchForm //withRouter(connect(mapStateToProps, {})(AddEvents))
