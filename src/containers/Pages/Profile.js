@@ -1,31 +1,15 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router"
-import { DatePicker, Select, Card } from "antd"
 import {
     Row,
     Col,
     Button,
-    Form,
     Spin,
-    Input,
-    Image,
     Divider,
-    Modal,
 } from "antd"
-import { Table, Tag, Space } from "antd"
-const { Option } = Select
-import moment from "moment"
 import "video-react/dist/video-react.css"
-import { Player } from "video-react"
 import "./Profile.scss"
-const layout = {
-    wrapperCol: { span: 24 },
-}
-const dateFormat = "YYYY/MM/DD"
-const cardBodyStyle = {
-    padding: 15,
-}
 
 class Profile extends Component {
     constructor(props) {
