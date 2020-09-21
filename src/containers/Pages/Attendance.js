@@ -1,29 +1,30 @@
 import React, { Component } from "react"
 import { DatePicker, Button, Select } from "antd"
-import { Row, Col, Table, Divider, Spin, Card } from "antd"
+import { Row, Col, Table, Divider, Spin, Card, Form, Input } from "antd"
 import axios from "axios"
 import config, { URLS } from "../../utils/config"
+import AttendanceCard from "../../components/AttendanceCard"
 const { Option } = Select
 import "./Attendance.scss"
-import { css, cx } from '@emotion/core'
+import { css, cx } from "@emotion/core"
 
 
 const tableCSS = {
-    margin: '40px 120px',
-    backgroundColor: 'white',
-    '& table': {
-      borderCollapse: 'collapse'
+    margin: "40px 120px",
+    backgroundColor: "white",
+    "& table": {
+        borderCollapse: "collapse"
     },
-    '& thead > tr > th': {
-      backgroundColor: 'darkblue',
-      color: 'white',
+    "& thead > tr > th": {
+        backgroundColor: "darkblue",
+        color: "white",
     },
-    '& thead > tr': {
-      borderWidth: '2px',
-      borderColor: 'yellow',
-      borderStyle: 'solid'
+    "& thead > tr": {
+        borderWidth: "2px",
+        borderColor: "yellow",
+        borderStyle: "solid"
     }
-  }
+}
 
 
 const data = [
@@ -190,12 +191,52 @@ class Attendance extends Component {
             <div>
                 <Spin size="large" spinning={false}>
                     <Row
-                        style={{ marginBottom: 20 }}
+                        gutter={[16, 24]}
+                        style={{ marginBottom: 0 }}
                         type="flex"
                         align="center">
+                        <Col>
+                            <Form
+                                wrapperCol= { {span: 24} }
+                                layout="inline"                               l                                
+                                // onFinish={this.onFinish}
+                                // onSubmit={this.onFinish}
+                                name="control-ref">
+                                <Form.Item
+                                    name="studentid"
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message:
+                                                "Student ID cannot be empty",
+                                        },
+                                    ]}>
+                                    <Input placeholder="Student ID" />
+                                </Form.Item>
+                                <Form.Item style={{marginRight: 0}}>
+                                    <Button type="primary" htmlType="submit">
+                                        Go
+                                    </Button>
+                                </Form.Item>
+                            </Form>
+                        </Col>                        
+                    </Row>
+                    <Row 
+                        style={{marginBottom: 20}}
+                        type="flex"
+                        align="center">
+                        <Col>
+                            {/* <p>Amal Salvin</p> */}
+                            <AttendanceCard/>
+                        </Col>
+                    </Row>
+                    <Row
+                        style={{ marginBottom: 20, alignItems: "center", justifyContent:"center" }}
+                        type="flex"
+                    >
                         <Col
                             xs={{ span: 24, offset: 0 }}
-                            sm={{ span: 5, offset: 1 }}>
+                            lg={{ span: 5, offset: 0 }}>
                             <DatePicker
                                 onChange={this.onChange}
                                 style={{ width: "100%", margin: 5 }}
@@ -226,7 +267,8 @@ class Attendance extends Component {
                         </Col>
                         <Col
                             xs={{ span: 23, offset: 0 }}
-                            lg={{ span: 5, offset: 1 }}>
+                            lg={{ span: 5, offset: 1 }}
+                            style={{ width: "fit-content"}}>
                             <Button type="primary">Load Attendance</Button>
                         </Col>
                     </Row>
@@ -235,10 +277,12 @@ class Attendance extends Component {
                             <div key={j}>
                                 {d.Batch.map((b, i) => {
                                     return (
-                                        <Row key={i + " " + j}>
+                                        <Row key={i + " " + j}
+                                            type="flex"
+                                            align="center">
                                             <Col
-                                                xs={{ span: 12, offset: 1 }}
-                                                lg={{ span: 12, offset: 6 }}>
+                                                xs={{ span: 12, offset: 0 }}
+                                                lg={{ span: 12, offset: 0 }}>
                                                 <Divider orientation="left">
                                                     <b>{d.Belt}</b> -{" "}
                                                     <b>{b.name}</b>
